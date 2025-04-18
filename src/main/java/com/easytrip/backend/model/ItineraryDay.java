@@ -1,5 +1,6 @@
 package com.easytrip.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "itinerary_day")
+@Table(name = "app_itinerary_day")
 public class ItineraryDay {
 
     @Id
@@ -32,5 +33,6 @@ public class ItineraryDay {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vacation_id", nullable = false)
+    @JsonBackReference
     private Vacation vacation;
 }

@@ -22,7 +22,6 @@ public class GeminiService {
     }
 
     public String getAnswer(String question) {
-        // Construct the request payload
         Map<String, Object> requestBody = Map.of(
                 "contents", new Object[] {
                         Map.of("parts", new Object[] {
@@ -42,4 +41,5 @@ public class GeminiService {
 
         return response;
     }
+
 }

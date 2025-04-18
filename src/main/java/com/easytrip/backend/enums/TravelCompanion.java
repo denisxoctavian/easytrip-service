@@ -4,7 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum TravelCompanion {
-    BACKPACKER("Backpacker"),
     SOLO("Solo"),
     COUPLE("Couple"),
     FAMILY("Family"),

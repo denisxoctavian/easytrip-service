@@ -34,10 +34,11 @@ public class UserAuthProvider {
 
     public String createToken(UserDto dto){
        Date now = new Date();
-       Date validity = new Date(now.getTime()+7_200_000);
+       Date validity = new Date(now.getTime()+14_400_000);
 
         return JWT.create()
-                .withIssuer(dto.getEmail())
+                .withSubject(dto.getEmail())
+                .withIssuer("easytrip-app")
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
                 .withClaim("fullName",dto.getFullName())

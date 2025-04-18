@@ -3,6 +3,7 @@ package com.easytrip.backend.model;
 
 import com.easytrip.backend.enums.TravelCompanion;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,12 +50,17 @@ public class Vacation {
 
     @ManyToMany
     @JoinTable(
-            name = "vacation_activities",
+            name = "app_vacation_activities",
             joinColumns = @JoinColumn(name = "vacation_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
     private List<Activity> activities;
 
     @OneToMany(mappedBy = "vacation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ItineraryDay> itinerary;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
