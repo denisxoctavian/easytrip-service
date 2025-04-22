@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface VacationMapper {
 
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "activities", target = "activityList")
     @Mapping(source = "itinerary", target = "itineraryDayList")
     VacationWithItineraryDto toDto(Vacation vacation);

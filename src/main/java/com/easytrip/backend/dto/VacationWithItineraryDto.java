@@ -19,6 +19,7 @@ import java.util.List;
 @Builder
 public class VacationWithItineraryDto {
 
+    Long id;
     BigDecimal budget;
     String country;
     Integer days;

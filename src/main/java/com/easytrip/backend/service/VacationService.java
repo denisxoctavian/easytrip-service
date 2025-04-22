@@ -27,6 +27,10 @@ public class VacationService {
                 .orElseThrow(() -> new RuntimeException("Vacation not found with id: " + id));
     }
 
+    public List<Vacation> findByUser(User user){
+        return vacationRepository.findByUser(user);
+    }
+
     public Vacation createVacation(VacationDto vacationDto, User user) throws JsonProcessingException {
 
         Vacation vacation = new Vacation();
