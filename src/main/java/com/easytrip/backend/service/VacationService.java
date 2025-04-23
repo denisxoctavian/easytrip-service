@@ -27,6 +27,10 @@ public class VacationService {
                 .orElseThrow(() -> new RuntimeException("Vacation not found with id: " + id));
     }
 
+    public void deleteById(Vacation id){
+        vacationRepository.delete(id);
+    }
+
     public List<Vacation> findByUser(User user){
         return vacationRepository.findByUser(user);
     }

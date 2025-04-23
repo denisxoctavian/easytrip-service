@@ -16,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequiredArgsConstructor
@@ -41,6 +42,17 @@ public class VacationController {
     public ResponseEntity<VacationWithItineraryDto> findVacationById(@PathVariable("id") Long id) {
         VacationWithItineraryDto vacationWithItineraryDto = vacationMapper.toDto(vacationService.findById(id));
         return ResponseEntity.ok(vacationWithItineraryDto);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteVacationById(@PathVariable("id") Long id){
+        Vacation existingVacation = this.vacationService.findById(id);
+        if(existingVacation != null){
+            vacationService.deleteById(existingVacation);
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping()
